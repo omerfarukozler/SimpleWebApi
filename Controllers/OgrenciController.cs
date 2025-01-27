@@ -9,8 +9,8 @@ namespace SimpleWebApi.Controllers
     {
         static List<Ogrenci> ogrenciler = new List<Ogrenci> {
             new Ogrenci { Id = 1, AdSoyad = "Ömer Faruk Özler" },
-            new Ogrenci { Id = 2, AdSoyad = "Cem Subaşı" },
-            new Ogrenci { Id = 3, AdSoyad = "Taylan Taşkırdı" }
+            new Ogrenci { Id = 2, AdSoyad = "Muhammed Orhan Keçeci" },
+            new Ogrenci { Id = 3, AdSoyad = "Rıdvan Baz" }
         };
         [HttpGet]
         public List<Ogrenci> Get()

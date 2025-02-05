@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using SimpleWebApi.Models;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace SimpleWebApi.Controllers
 {
@@ -7,26 +9,35 @@ namespace SimpleWebApi.Controllers
     [Route("[controller]")]
     public class OgrenciController : ControllerBase
     {
-        static List<Ogrenci> ogrenciler = new List<Ogrenci> {
-            new Ogrenci { Id = 1, AdSoyad = "Ömer Faruk Özler" },
-            new Ogrenci { Id = 2, AdSoyad = "Muhammed Orhan Keçeci" },
-            new Ogrenci { Id = 3, AdSoyad = "Rıdvan Baz" }
-        };
+        private readonly ApplicationDbContext _context;
+
+        public OgrenciController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
         [HttpGet]
-        public List<Ogrenci> Get()
+        public async Task<IActionResult> GetStudents()
         {
-            return ogrenciler;
+            try
+            {
+                var ogrenciler = await _context.Students.ToListAsync();
+                return Ok(ogrenciler);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Hata: {ex.Message}");
+            }
         }
-        [HttpGet("{id}")]
-        public Ogrenci Get(int id)
-        {
-            return ogrenciler.FirstOrDefault(o => o.Id == id);
-        }
+
+
         [HttpPost]
-        public Ogrenci Post(Ogrenci ogrenci)
+        public async Task<IActionResult> AddStudent([FromBody] Ogrenci ogrenci)
         {
-            ogrenciler.Add(ogrenci);
-            return ogrenci;
+            _context.Students.Add(ogrenci);
+            await _context.SaveChangesAsync();
+            return CreatedAtAction(nameof(GetStudents), new { id = ogrenci.Id }, ogrenci);
         }
     }
+
 }

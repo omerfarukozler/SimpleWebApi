@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Projeler\\SimpleWebApi\\SimpleWebApi.csproj": {}
+    "C:\\Projeler\\SimpleWebApi\\SimpleWebApi.csproj": {}
   },
   "projects": {
-    "c:\\Projeler\\SimpleWebApi\\SimpleWebApi.csproj": {
+    "C:\\Projeler\\SimpleWebApi\\SimpleWebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Projeler\\SimpleWebApi\\SimpleWebApi.csproj",
+        "projectUniqueName": "C:\\Projeler\\SimpleWebApi\\SimpleWebApi.csproj",
         "projectName": "SimpleWebApi",
-        "projectPath": "c:\\Projeler\\SimpleWebApi\\SimpleWebApi.csproj",
+        "projectPath": "C:\\Projeler\\SimpleWebApi\\SimpleWebApi.csproj",
         "packagesPath": "C:\\Users\\Monster\\.nuget\\packages\\",
-        "outputPath": "c:\\Projeler\\SimpleWebApi\\obj\\",
+        "outputPath": "C:\\Projeler\\SimpleWebApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Monster\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -46,6 +46,26 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.4.0, )"

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Projeler\\SimpleWebApi\\SimpleWebApi.csproj": {}
+    "c:\\Projeler\\SimpleWebApi\\SimpleWebApi.csproj": {}
   },
   "projects": {
-    "C:\\Projeler\\SimpleWebApi\\SimpleWebApi.csproj": {
+    "c:\\Projeler\\SimpleWebApi\\SimpleWebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projeler\\SimpleWebApi\\SimpleWebApi.csproj",
+        "projectUniqueName": "c:\\Projeler\\SimpleWebApi\\SimpleWebApi.csproj",
         "projectName": "SimpleWebApi",
-        "projectPath": "C:\\Projeler\\SimpleWebApi\\SimpleWebApi.csproj",
+        "projectPath": "c:\\Projeler\\SimpleWebApi\\SimpleWebApi.csproj",
         "packagesPath": "C:\\Users\\Monster\\.nuget\\packages\\",
-        "outputPath": "C:\\Projeler\\SimpleWebApi\\obj\\",
+        "outputPath": "c:\\Projeler\\SimpleWebApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Monster\\AppData\\Roaming\\NuGet\\NuGet.Config",

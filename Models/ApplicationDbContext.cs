@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using SimpleWebApi;
 using SimpleWebApi.Models;
 
 public class ApplicationDbContext : DbContext
@@ -8,13 +9,6 @@ public class ApplicationDbContext : DbContext
     {
     }
 
-    public DbSet<Ogrenci> Students { get; set; }
-
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.Entity<Ogrenci>(entity =>
-        {
-            entity.ToTable("Students");
-        });
-    }
+    public DbSet<Student> Students { get; set; }
+ 
 }

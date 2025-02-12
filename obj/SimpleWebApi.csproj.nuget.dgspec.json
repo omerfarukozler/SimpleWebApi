@@ -1,28 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Projeler\\SimpleWebApi\\SimpleWebApi.csproj": {}
+    "/Users/mac1/Documents/Projeler/SimpleWebApi/SimpleWebApi.csproj": {}
   },
   "projects": {
-    "c:\\Projeler\\SimpleWebApi\\SimpleWebApi.csproj": {
+    "/Users/mac1/Documents/Projeler/SimpleWebApi/SimpleWebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Projeler\\SimpleWebApi\\SimpleWebApi.csproj",
+        "projectUniqueName": "/Users/mac1/Documents/Projeler/SimpleWebApi/SimpleWebApi.csproj",
         "projectName": "SimpleWebApi",
-        "projectPath": "c:\\Projeler\\SimpleWebApi\\SimpleWebApi.csproj",
-        "packagesPath": "C:\\Users\\Monster\\.nuget\\packages\\",
-        "outputPath": "c:\\Projeler\\SimpleWebApi\\obj\\",
+        "projectPath": "/Users/mac1/Documents/Projeler/SimpleWebApi/SimpleWebApi.csproj",
+        "packagesPath": "/Users/mac1/.nuget/packages/",
+        "outputPath": "/Users/mac1/Documents/Projeler/SimpleWebApi/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Monster\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/mac1/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -46,9 +43,9 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
-            "Microsoft.Data.SqlClient": {
+            "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[6.0.1, )"
+              "version": "[8.0.0, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
@@ -64,7 +61,7 @@
             },
             "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",
-              "version": "[8.0.2, )"
+              "version": "[8.0.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -90,7 +87,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.405/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

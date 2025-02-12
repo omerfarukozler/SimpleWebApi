@@ -21,24 +21,23 @@ namespace SimpleWebApi.Migrations
                 .HasAnnotation("ProductVersion", "8.0.2")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
+            // AutoIncrementColumns satırı kaldırıldı
+            // modelBuilder.Entity("SimpleWebApi.Models.Ogrenci", b =>
+            modelBuilder.Entity("SimpleWebApi.Models.Ogrenci", entity =>
+            {
+                entity.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
 
-            modelBuilder.Entity("SimpleWebApi.Models.Ogrenci", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                entity.Property<string>("AdSoyad")
+                    .IsRequired()
+                    .HasColumnType("longtext");
 
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+                entity.HasKey("Id");
 
-                    b.Property<string>("AdSoyad")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                entity.ToTable("Students");
+            });
 
-                    b.HasKey("Id");
-
-                    b.ToTable("Students");
-                });
 #pragma warning restore 612, 618
         }
     }

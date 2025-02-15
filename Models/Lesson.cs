@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace SimpleWebApi.Models
 {
     public class Lesson
@@ -6,6 +8,7 @@ namespace SimpleWebApi.Models
 
         public required string LessonName { get; set; }
 
+        [JsonIgnore]
         public ICollection<Student>? Students { get; set; }
     }
 }

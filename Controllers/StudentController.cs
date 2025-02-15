@@ -48,13 +48,52 @@ namespace SimpleWebApi.Controllers
             return Ok(student);
         }
 
-        [HttpPost]
+        [HttpPost("add-student")]
         public async Task<IActionResult> AddStudent([FromBody] Student student)
         {
-            await _context.Students.AddAsync(student);
+            _context.Students.Add(student);
             await _context.SaveChangesAsync();
             return CreatedAtAction(nameof(GetStudents), new { id = student.Id }, student);
         }
+
+        [HttpPost("add-address/{studentId}")]
+        public async Task<IActionResult> AddAddress(int studentId, [FromBody] StudentAddress address)
+        {
+            var student = await _context.Students.FindAsync(studentId);
+            if (student == null) return NotFound();
+
+            student.StudentAddress = address;
+            await _context.SaveChangesAsync();
+            return Ok(student);
+        }
+
+        [HttpPost("add-phone/{studentId}")]
+        public async Task<IActionResult> AddPhone(int studentId, [FromBody] PhoneNumber phone)
+        {
+            var student = await _context.Students.Include(s => s.PhoneNumbers).FirstOrDefaultAsync(s => s.Id == studentId);
+            if (student == null) return NotFound();
+
+            student.PhoneNumbers.Add(phone);
+            await _context.SaveChangesAsync();
+            return Ok(student);
+        }
+
+        [HttpPost("add-lesson/{studentId}")]
+        public async Task<IActionResult> AddLesson(int studentId, [FromBody] Lesson lesson)
+        {
+            var student = await _context.Students.Include(s => s.Lessons).FirstOrDefaultAsync(s => s.Id == studentId);
+            if (student == null) return NotFound();
+
+            var existingLesson = await _context.Lesson.FirstOrDefaultAsync(l => l.Id == lesson.Id);
+            if (existingLesson == null)
+                student.Lessons.Add(lesson);
+            else
+                student.Lessons.Add(existingLesson);
+
+            await _context.SaveChangesAsync();
+            return Ok(student);
+        }
+
         [HttpPut]
         public async Task<IActionResult> PutStudent([FromBody] Student student)
         {

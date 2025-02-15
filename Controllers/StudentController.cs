@@ -21,7 +21,11 @@ namespace SimpleWebApi.Controllers
         {
             try
             {
-                var students = await _context.Students.ToListAsync();
+                var students = await _context.Students
+                    .Include(s => s.StudentAddress)
+                    .Include(s => s.PhoneNumbers)
+                    .Include(s => s.Lessons)
+                    .ToListAsync();
                 return Ok(students);
             }
             catch (Exception ex)
@@ -29,7 +33,20 @@ namespace SimpleWebApi.Controllers
                 return StatusCode(500, $"Hata: {ex.Message}");
             }
         }
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetStudent(int id)
+        {
+            var student = await _context.Students
+                .Include(s => s.StudentAddress)
+                .FirstOrDefaultAsync(s => s.Id == id);
 
+            if (student == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(student);
+        }
 
         [HttpPost]
         public async Task<IActionResult> AddStudent([FromBody] Student student)
@@ -41,22 +58,24 @@ namespace SimpleWebApi.Controllers
         [HttpPut]
         public async Task<IActionResult> PutStudent([FromBody] Student student)
         {
-            var existingStudent = await _context.Students.FirstOrDefaultAsync(s=>s.Id == student.Id);
+            var existingStudent = await _context.Students.FirstOrDefaultAsync(s => s.Id == student.Id);
 
-            if (existingStudent == null) {
+            if (existingStudent == null)
+            {
                 return NotFound();
             }
             existingStudent.AdSoyad = student.AdSoyad;
             _context.Entry(existingStudent).State = EntityState.Modified;
             await _context.SaveChangesAsync();
             return NoContent();
-            
+
         }
         [HttpDelete]
         public async Task<IActionResult> DeleteStudent([FromBody] Student student)
         {
-            var existingStudent = await _context.Students.FirstOrDefaultAsync(s=>s.Id == student.Id);
-            if (existingStudent == null) {
+            var existingStudent = await _context.Students.FirstOrDefaultAsync(s => s.Id == student.Id);
+            if (existingStudent == null)
+            {
                 return NotFound();
             }
             existingStudent.Id = student.Id;

@@ -10,4 +10,17 @@ public class ApplicationDbContext : DbContext
     }
 
     public DbSet<Student> Students { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+    modelBuilder.Entity<Student>()
+        .HasOne(s => s.StudentAddress)
+        .WithOne(a => a.Student)
+        .HasForeignKey<StudentAddress>(a => a.StudentId);
+
+    modelBuilder.Entity<PhoneNumber>()
+    .HasOne(s=>s.Student)
+    .WithMany(p=>p.PhoneNumbers);
+}
+
 }

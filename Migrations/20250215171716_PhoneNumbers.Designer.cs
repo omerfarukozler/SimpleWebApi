@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,44 +10,16 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace SimpleWebApi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250215171716_PhoneNumbers")]
+    partial class PhoneNumbers
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "8.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
-
-            modelBuilder.Entity("LessonStudent", b =>
-                {
-                    b.Property<int>("LessonsId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("StudentsId")
-                        .HasColumnType("int");
-
-                    b.HasKey("LessonsId", "StudentsId");
-
-                    b.HasIndex("StudentsId");
-
-                    b.ToTable("LessonStudent");
-                });
-
-            modelBuilder.Entity("SimpleWebApi.Models.Lesson", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("LessonName")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Lesson");
-                });
 
             modelBuilder.Entity("SimpleWebApi.Models.PhoneNumber", b =>
                 {
@@ -100,21 +73,6 @@ namespace SimpleWebApi.Migrations
                         .IsUnique();
 
                     b.ToTable("StudentAddress");
-                });
-
-            modelBuilder.Entity("LessonStudent", b =>
-                {
-                    b.HasOne("SimpleWebApi.Models.Lesson", null)
-                        .WithMany()
-                        .HasForeignKey("LessonsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("SimpleWebApi.Models.Student", null)
-                        .WithMany()
-                        .HasForeignKey("StudentsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("SimpleWebApi.Models.PhoneNumber", b =>
